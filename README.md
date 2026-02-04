@@ -127,4 +127,10 @@ Clock (`clk`) and Reset (`rst`) signals were missing from the module port declar
 **Fix:**  
 Added `clk` and `rst` signals to the module port list and updated module instantiations accordingly.
 
+##  Achieved  Goals
 
+- Gained practical experience in **UVM (Universal Verification Methodology)** architecture and workflow.
+- Learned how to build a complete **UVM Testbench**.
+- Improved understanding of **SystemVerilog OOP concepts**.
+- Learned how to use the **UVM Factory** for dynamic object and component creation.
+- Implemented **Functional Coverage** using covergroups and subscribers.
