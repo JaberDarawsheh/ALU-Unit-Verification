@@ -40,4 +40,42 @@ The ALU is capable of executing the following operations on 32-bit signed and un
 | Opcode  | Input     | 3     | Operation selection            |
 | Result  | Output    | 32    | Operation result               |
 | Error   | Output    | 1     | Error flag                     |
-       
+
+
+##   ALU Unit Verification Project Structure 
+
+```text
+ALU_Unit_Verification/
+├── rtl/
+│ └── alu.sv
+├── tb/
+│ ├── agent/
+│ │ ├── alu_sequence_item.sv
+│ │ ├── alu_sequence.sv
+│ │ ├── alu_driver.sv
+│ │ └── alu_monitor.sv
+│ ├── environment/
+│ │ ├── alu_agent.sv
+│ │ ├── alu_environment.sv
+│ │ ├── alu_scoreboard.sv
+│ │ └── alu_subscriber.sv
+│ ├── interface/
+│ │ └── alu_interface.sv
+│ ├── pkg/
+│ │ └── alu_pkg.sv
+│ ├── sequences/
+│ │ ├── alu_add_sequence.sv
+│ │ ├── alu_and_sequence.sv
+│ │ ├── alu_or_sequence.sv
+│ │ ├── alu_overflow_sequence.sv
+│ │ ├── alu_random_sequence.sv
+│ │ ├── alu_sub_sequence.sv
+│ │ ├── alu_undefined_opcode_sequence.sv
+│ │ ├── alu_underflow_sequence.sv
+│ │ └── alu_xor_sequence.sv
+│ ├── tests/
+│ │ ├── alu_random_test.sv
+│ │ └── alu_regression_test.sv
+│ └── top/
+│ └── testbench.sv
+```
