@@ -23,4 +23,21 @@ The ALU is capable of executing the following operations on 32-bit signed and un
      - **Agent**: holds Sequence_items, sequence, sequencer, driver, monitor.
      - **Environment**: top level test holds agent, scoreboard, subscriber.
      - **scoreboard**: checker (compare the actual DUT output with expected values computed in reference model).
-     - **Subscriber**: coverage collector - to ensure that all test scenarios have been tested. 
+     - **Subscriber**: coverage collector - to ensure that all test scenarios have been tested.
+
+  - Interface:
+     - encapsulate related signals together into one block.
+     - synchronize driving and monitoring. Used by uvm_driver and uvm_monitor to send or observe signals to/from DUT.
+
+### Interface Signals
+
+| Signal  | Direction | Width | Description                    |
+|---------|-----------|-------|--------------------------------|
+| clk     | Input     | 1     | Clock signal                   |
+| rst     | Input     | 1     | Asynchronous reset (active high)|
+| A       | Input     | 32    | First operand (signed)         |
+| B       | Input     | 32    | Second operand (unsigned)      |
+| Opcode  | Input     | 3     | Operation selection            |
+| Result  | Output    | 32    | Operation result               |
+| Error   | Output    | 1     | Error flag                     |
+       
