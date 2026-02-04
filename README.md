@@ -97,8 +97,26 @@ Modified reset handling logic to ensure reset has priority and correctly initial
 **Issue:**  
 Overflow and underflow flags were incorrectly detected in some arithmetic operations.
 
+**Correct Detection Rules:**
+
+#### ➤ Addition Overflow
+Overflow happens when adding two numbers with the same sign gives a result with a different sign:
+
+- Positive + Positive → Negative  → **Overflow**
+- Negative + Negative → Positive → **Overflow**
+
+---
+
+#### ➤ Subtraction Underflow
+Underflow happens when subtracting numbers with different signs gives an unexpected sign result:
+
+- Positive − Negative → Negative → **Underflow**
+- Negative − Positive → Positive → **Underflow**
+
+---
+
 **Fix:**  
-Corrected flag calculation logic based on operand sign bits and result sign to ensure accurate detection.
+Updated overflow and underflow detection logic using operand sign bits and result sign comparison to ensure correct flag generation.
 
 ---
 
