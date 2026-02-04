@@ -82,4 +82,31 @@ ALU_Unit_Verification/
 
 ##   Detected RTL Design Bugs During Hardware Verification
 
+##   Bugs & Fixes
+
+### 1️⃣ Reset Signal Issue
+**Issue:**  
+Reset signal was not properly resetting the ALU during ongoing operations, which caused incorrect outputs when reset was asserted.
+
+**Fix:**  
+Modified reset handling logic to ensure reset has priority and correctly initializes all registers and outputs.
+
+---
+
+### 2️⃣ Overflow and Underflow Detection Error
+**Issue:**  
+Overflow and underflow flags were incorrectly detected in some arithmetic operations.
+
+**Fix:**  
+Corrected flag calculation logic based on operand sign bits and result sign to ensure accurate detection.
+
+---
+
+### 3️⃣ Missing clk and rst in Module Port List
+**Issue:**  
+Clock (`clk`) and Reset (`rst`) signals were missing from the module port declaration, causing integration and simulation issues.
+
+**Fix:**  
+Added `clk` and `rst` signals to the module port list and updated module instantiations accordingly.
+
 
