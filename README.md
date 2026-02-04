@@ -79,3 +79,7 @@ ALU_Unit_Verification/
 │ └── top/
 │ └── testbench.sv
 ```
+
+##   Detected RTL Design Bugs During Hardware Verification
+
+
