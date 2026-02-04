@@ -20,8 +20,6 @@ class alu_monitor extends uvm_monitor;
     forever
       begin
         item = alu_sequence_item::type_id::create("item");
-        wait(! v_alu_intf);
-        
         // wait until the driver to drive the input signals to the DUT
         @(negedge v_alu_intf.clk);
         

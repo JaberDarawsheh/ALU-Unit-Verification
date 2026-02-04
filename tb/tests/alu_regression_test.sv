@@ -29,13 +29,13 @@ task run_phase(uvm_phase phase);
    super.run_phase(phase);
    phase.raise_objection(this);
 
-   add_sequence = alu_add_sequence:type_id::create("add_sequence");
+   add_sequence = alu_add_sequence::type_id::create("add_sequence");
    add_sequence.start(env.agent.sequencer);
 
    and_sequence = alu_and_sequence::type_id::create("and_sequence");
    and_sequence.start(env.agent.sequencer);
 
-   or_sequencec = alu_or_sequence::type_id::create("or_sequence");
+   or_sequence = alu_or_sequence::type_id::create("or_sequence");
    or_sequence.start(env.agent.sequencer);
 
    overflow_sequence = alu_overflow_sequence::type_id::create("overflow_sequence");
@@ -61,6 +61,4 @@ task run_phase(uvm_phase phase);
    `uvm_info(get_type_name(), "The end of the regression test", UVM_LOW);
 
 endtask
-
-
 endclass

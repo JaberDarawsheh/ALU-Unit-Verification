@@ -10,9 +10,9 @@ package alu_pkg;
   `include "../agent/alu_monitor.sv"
 
   `include "../environment/alu_agent.sv"
-  `include "../environment/alu_environment.sv"
   `include "../environment/alu_scoreboard.sv"
   `include "../environment/alu_subscriber.sv"
+  `include "../environment/alu_environment.sv"
 
   `include "../sequences/alu_add_sequence.sv"
   `include "../sequences/alu_and_sequence.sv"

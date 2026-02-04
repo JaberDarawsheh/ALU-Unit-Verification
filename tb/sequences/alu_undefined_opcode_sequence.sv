@@ -16,14 +16,13 @@ class alu_undefined_opcode_sequence extends uvm_sequence #(alu_sequence_item);
 
    #15;
 
-   item.randomize() with {
+   assert(item.randomize() with {
      rst == 0;
      opcode inside {3'b101, 3'b110, 3'b111};
-   };
+   });
 
    start_item(item);
    finish_item(item);
-
    #15;
  endtask
 endclass

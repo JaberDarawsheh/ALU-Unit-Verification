@@ -16,13 +16,12 @@ class alu_underflow_sequence extends uvm_sequence #(alu_sequence_item);
 
    #15;
 
-   item.randomize() with {
+   assert(item.randomize() with {
      rst == 0;
      opcode == 3'b001; // subtraction operation
      A == 32'sh80000000; // min value of negative 32-bit
      B == 32'sh1;        // 1
-   };
-
+   });
    start_item(item);
    finish_item(item);
 

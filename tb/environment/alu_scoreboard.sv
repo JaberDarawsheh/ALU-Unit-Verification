@@ -3,6 +3,7 @@ class alu_scoreboard extends uvm_scoreboard;
  uvm_analysis_imp #(alu_sequence_item, alu_scoreboard) Scoreboard_port;
  alu_sequence_item item_ref;
  alu_sequence_item packetsQueue[$];
+ alu_sequence_item packet;
 
  function new (string name = "alu_scoreboard", uvm_component parent);
    super.new(name, parent);
@@ -21,8 +22,6 @@ class alu_scoreboard extends uvm_scoreboard;
 
  task run_phase(uvm_phase phase);
    super.run_phase(phase);
-   alu_sequence_item packet;
-   
    forever begin
     wait(packetsQueue.size() > 0);
     packet = packetsQueue.pop_front();
@@ -44,7 +43,7 @@ class alu_scoreboard extends uvm_scoreboard;
     
     `uvm_info("ACTUAL PACKET", $sformatf("Actual Packet :  A = %0d, B = %0d, opcode = %0d, Result = %0d, Error = %0d", packet.A, packet.B, packet.opcode, packet.Result, packet.Error), UVM_LOW);
     `uvm_info("EXPECTED PACKET" ,$sformatf("EXpected Packet :  A = %0d, B = %0d, opcode = %0d, Result = %0d, Error = %0d", item_ref.A, item_ref.B, item_ref.opcode, item_ref.Result, item_ref.Error) , UVM_LOW);
-    $$display("------------------------------------------------------------");
+    $display("------------------------------------------------------------");
    end
  endtask
 
@@ -83,8 +82,8 @@ class alu_scoreboard extends uvm_scoreboard;
             Result = A - B;
             // here you need to detect the underflow in the sign bit
             // the underflow occur when pos - neg = neg  or neg - pos = pos
-            if(if ((A >= 0 && B < 0 && $signed(A - B) < 0) || (A < 0 && B >= 0 && $signed(A - B) >= 0)) )
-               Error = 1;
+            if ((A >= 0 && B < 0 && $signed(A - B) < 0) || (A < 0 && B >= 0 && $signed(A - B) >= 0))
+                Error = 1;
      end
      3'b010:begin
            // AND operation
@@ -106,4 +105,4 @@ class alu_scoreboard extends uvm_scoreboard;
    endcase
   end
  endtask
-endclass 
+endclass

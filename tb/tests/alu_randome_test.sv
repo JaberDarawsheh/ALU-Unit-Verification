@@ -11,17 +11,17 @@ class alu_randome_test extends uvm_test;
 
   function void build_phase (uvm_phase phase);
     super.build_phase(phase);
-    env = alu_environment::type_id::create("env");
+    env = alu_environment::type_id::create("env",this);
   endfunction
 
   task run_phase(uvm_phase phase);
     super.run_phase(phase);
     phase.raise_objection(this);
-    seq = alu_randome_sequence::type_id::create("seq");
+    rseq = alu_randome_sequence::type_id::create("rseq",this);
 
     repeat(500)
     begin
-      seq.start(env.agent.sequencer);
+      rseq.start(env.agent.sequencer);
     end
 
     phase.drop_objection(this);

@@ -1,6 +1,6 @@
 class alu_subscriber extends uvm_subscriber #(alu_sequence_item);
   `uvm_component_utils(alu_subscriber)
-
+   uvm_analysis_export #(alu_sequence_item) subscriber_port;
    alu_sequence_item subsc;
    covergroup alu_coverage;
      A:      coverpoint subsc.A;
@@ -20,13 +20,13 @@ class alu_subscriber extends uvm_subscriber #(alu_sequence_item);
       `uvm_info(get_type_name(), "inside constructor of the alu_subscriber", UVM_LOW);
    endfunction
 
-   function void write(alu_sequence_item item)
-     subsc.A      = item.A;
-     subsc.B      = item.B;
-     subsc.opcode = item.opcode;
-     subsc.Result = item.Result;
-     subsc.Error  = item.Error;
-     alu_coverage.smaple();
+   virtual function void write(alu_sequence_item t);
+     subsc.A      = t.A;
+     subsc.B      = t.B;
+     subsc.opcode = t.opcode;
+     subsc.Result = t.Result;
+     subsc.Error  = t.Error;
+     alu_coverage.sample();
    endfunction
 
    // the last uvm phase 

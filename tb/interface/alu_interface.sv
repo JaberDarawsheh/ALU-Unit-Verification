@@ -1,4 +1,4 @@
-interface alu_intf (input logic clk, rst);
+interface alu_interface (input logic clk, rst);
 
  // inputs and outputs signals
   logic signed [31:0] A;
@@ -25,5 +25,4 @@ endclocking
 
 modport driver (clocking driver_cb, input clk);
 modport monitor (clocking monitor_cb, input clk);
-
 endinterface

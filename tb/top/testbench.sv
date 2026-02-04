@@ -16,7 +16,7 @@ module testbench;
         .rst    (vitf.rst),
         .A      (vitf.A),
         .B      (vitf.B),
-        .opcode (vitf.Opcode),
+        .opcode (vitf.opcode),
         .Result (vitf.Result),
         .Error  (vitf.Error)
     );
@@ -33,7 +33,6 @@ module testbench;
         clk = 0;
         rst = 0;
     end
-
   initial begin
         // run_test("alu_randome_test");
         run_test("alu_regression_test");
