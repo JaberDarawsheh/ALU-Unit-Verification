@@ -86,7 +86,7 @@ ALU_Unit_Verification/
 
 ### 1️⃣ Reset Signal Issue
 **Issue:**  
-Reset signal was not cleared after internal operations, which caused incorrect outputs when reset was asserted.
+Reset signal was not cleared after internal operations, it kept holding the old value and did not update.
 
 **Fix:**  
 Modified reset handling logic to ensure reset has priority and correctly initializes all registers and outputs.
